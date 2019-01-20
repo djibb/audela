@@ -10,24 +10,10 @@ OBJ += $(patsubst $(LIBCAMDIR)/%.cpp, %.o, $(filter $(LIBCAMDIR)/%.cpp, $(SRC)))
 
 include ../../../Makefile1
 
-#CFLAGS += -I $(EXTINC)   -I ../../../external/libindi/include -I /root/audela-code/audela/src/audela/libaudela/src/
-#CXXFLAGS += -I $(EXTINC)  -I ../../../external/libindi/include -I /root/audela-code/audela/src/audela/libaudela/src/
-#LDFLAGS  += ../../../external/libindi/lib/libindiclient.a -L$(EXTLIB) -lindi -lm -lcfitsio -lpthread 
+#CFLAGS += -I $(EXTINC)   -I ../../../external/libindi/include
+#CXXFLAGS += -I $(EXTINC)  -I ../../../external/libindi/include
+CFLAGS += -I $(EXTINC)   -I /usr/include/libindi/
+CXXFLAGS += -I $(EXTINC)  -I /usr/include/libindi/
 
-# Note : on lie vers notre propre version d'INDI :
-CFLAGS += -I $(EXTINC)   -I /usr/local/include/libindi
-CXXFLAGS += -I $(EXTINC)  -I /usr/local/include/libindi
-#CFLAGS += -I $(EXTINC)   -I /usr/include/
-#CXXFLAGS += -I $(EXTINC)  -I /usr/include/
+LDFLAGS  += /usr/lib/x86_64-linux-gnu/libindiclient.a -L$(EXTLIB)  -lm -lcfitsio -lpthread
 
-# Note : idem, on lie avec la lib INDI statique compilée par nos soins
-# Attention, -lindi dépréciée depuis libindi1.4 ! Remplacée par -lindidriver
-# il faudra changer les entêtes et vérifier que ça marche avec les versions récentes.
-# Vérifier le nom de la lib INDI avec "cat /usr/lib/x86_64-linux-gnu/pkgconfig/libindi.pc"
-
-# - Adapter le chemin des libs ci-dessous
-# - Penser à construire audela/external et audela/contrib avant de lancer le make
-# - Désinstaller le citsio-dev de la distribution, il faut utiliser celui d'AudeLA.
-
-#LDFLAGS  += ../../../external/libindi/lib/libindiclient.a -L/root/audela-code/audela/src/external/cfitsio/cfitsio3340 -L$(EXTLIB) -lindi -lm -lcfitsio -lpthread
-LDFLAGS  += /usr/local/lib/libindiclient.a -L/root/audela-code/audela/src/external/cfitsio/cfitsio3340 -L$(EXTLIB) -lindi -lm -lcfitsio -lpthread

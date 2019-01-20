@@ -1,4 +1,4 @@
-.TH "tkhtml" "n" "Thu Jan 10 00:41:01 UTC 2019"
+.TH "tkhtml" "n" "Sun Jan 20 16:52:12 UTC 2019"
 
 
 .SH "NAME"
